@@ -1,0 +1,80 @@
+/* Shared liquid-glass surfaces. Opaque fallbacks keep every page readable. */
+:root{
+ --liquid-surface:rgba(255,252,249,.76);
+ --liquid-sheen:linear-gradient(135deg,rgba(255,255,255,.72),rgba(255,255,255,.10) 45%,rgba(241,221,218,.24));
+ --liquid-depth:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(133,89,96,.12),0 12px 32px rgba(66,34,40,.09);
+ --liquid-filter:blur(18px) saturate(135%);
+}
+body{background:radial-gradient(ellipse at 3% 18%,#e8cbd5 0,transparent 42%),radial-gradient(ellipse at 100% 52%,#e5d8c9 0,transparent 42%),#f7f3ef}#booking-form,.menu-tools,.visit-address,.visit-map{
+ background-color:var(--liquid-surface);background-image:var(--liquid-sheen);
+ -webkit-backdrop-filter:var(--liquid-filter);backdrop-filter:var(--liquid-filter);
+ box-shadow:var(--liquid-depth);border:0;
+}
+.menu-intro{background:transparent}
+.menu-tools{padding:28px;border-radius:20px;margin-bottom:30px}
+.menu-category{border-color:#cbbab7}
+.menu-category summary{border-radius:12px;background:rgba(255,252,249,.36);margin-block:5px;box-shadow:inset 0 1px 0 #ffffffa6;transition:background .2s,box-shadow .2s}
+.menu-category[open] summary{background:linear-gradient(125deg,#fffaf5d9,#ead7d9a6);box-shadow:inset 0 1px 0 #fff,0 6px 18px #562b3610}
+.menu-category[open]{background:rgba(255,252,249,.28)}
+.menu-tools .category-shortcut{background:linear-gradient(145deg,#ffffffc9,#fff8f580);border-color:#b9a19f;box-shadow:inset 0 1px 0 #fff}
+.menu-tools .category-shortcut[aria-expanded=true]{background:linear-gradient(145deg,#934758,#6e202e);color:#fffaf6;border-color:#6e202e}
+.button,.service-select{
+ background:linear-gradient(145deg,#964c5d,#6e202e 80%);
+ border-color:transparent;box-shadow:inset 0 1px 0 #ffffff70,inset 0 -1px 0 #2e0c2440,0 5px 14px #562b361c;
+ transition:background .2s,box-shadow .2s;
+}
+.button.outline{background:linear-gradient(140deg,#ffffffdc,#f7eae3ad);color:var(--wine);border-color:#b9a19f;box-shadow:inset 0 1px 0 #fff,0 5px 14px #562b3610}
+.language-bar select,.menu-search-row input,#booking-form input,#booking-form select,#booking-form textarea{
+ background:linear-gradient(145deg,#fffdfbe6,#ffffff85);border:1px solid #b69c9e;box-shadow:inset 0 1px 0 #fff;color:var(--ink);
+}
+.intro{background:#fffdf75c}.credentials,.booking{background:transparent}
+.about{background:linear-gradient(125deg,#7f3445f5,#4e1726f5);box-shadow:inset 0 1px 0 #ffffff59,inset 0 -1px 0 #ffffff24}
+.credentials article{background:linear-gradient(135deg,#fffdfbbf,#fffdfb52);border:0;border-radius:16px;padding:26px;box-shadow:var(--liquid-depth)}
+.visit{align-items:stretch}.visit-address{border-radius:20px;padding:28px}.visit-map{display:flex;border-radius:20px}.visit-map iframe{min-height:100%;height:440px}
+footer{background:linear-gradient(140deg,#ffffffb8,#e9d9d2ad);box-shadow:inset 0 1px 0 #fff}
+.hero-services{background:rgba(38,24,26,.52)}
+@media(hover:hover){
+ .button:hover,.service-select:hover{background:linear-gradient(145deg,#a9586c,#7c2b3f);box-shadow:inset 0 1px 0 #ffffff9c,0 8px 22px #562b3633}
+ .button.outline:hover{background:linear-gradient(145deg,#fff,#f2e2e0);color:var(--wine)}
+ .menu-category summary:hover{background:#fffaf5c9;box-shadow:inset 0 1px 0 #fff,0 6px 18px #562b3617}
+ .menu-tools .category-shortcut:hover{background:#fffaf5;border-color:var(--wine)}
+ .menu-tools .category-shortcut[aria-expanded=true]:hover{background:#8c374a;color:#fff}
+}
+@media(max-width:700px){.menu-tools{padding:20px 16px}.visit-address{padding:24px}.credentials article{padding:22px}.visit-map iframe{height:340px}.menu-tools,#booking-form{--liquid-filter:blur(12px) saturate(125%)}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){#booking-form,.menu-tools,.visit-address,.visit-map{background:#fcf7f2}}
+@media(prefers-reduced-transparency:reduce){#booking-form,.menu-tools,.visit-address,.visit-map{background:#fcf7f2;backdrop-filter:none;-webkit-backdrop-filter:none}.hero-services{background:#392a2e}.credentials article,.menu-category summary{background:#fcf7f2}}
+@media(prefers-reduced-motion:reduce){.button,.service-select,.menu-category summary{transition:none}}
+@media(forced-colors:active){#booking-form,.menu-tools,.visit-address,.visit-map,.credentials article,.menu-category summary,.button,.service-select,footer,.about{background:Canvas;color:CanvasText;box-shadow:none;border:1px solid CanvasText;backdrop-filter:none;-webkit-backdrop-filter:none}}
+@media print{body,.menu-category[open],.menu-category summary{background:#fff;box-shadow:none}.menu-category summary{color:#000}}
+/* Clear glass controls, without a solid bevel or press-down movement. */
+.button,.button.outline,.service-select,
+.menu-tools .category-shortcut,.menu-tools .category-shortcut[aria-expanded=true]{
+ background:linear-gradient(135deg,rgba(255,255,255,.70),rgba(255,248,246,.26) 55%,rgba(234,207,215,.44));
+ color:#641c2c;border:1px solid rgba(139,96,107,.42);
+ border-radius:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 6px 18px rgba(70,32,43,.10);
+ -webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);
+ transform:none;transition:background .22s ease,border-color .22s ease,box-shadow .22s ease;
+}
+.menu-tools .category-shortcut[aria-expanded=true]{
+ background:linear-gradient(135deg,#fff5f7b8,#e5b8c67a);border-color:#8e5365;
+}
+@media(hover:hover){
+ .button:hover,.button.outline:hover,.service-select:hover,
+ .menu-tools .category-shortcut:hover,.menu-tools .category-shortcut[aria-expanded=true]:hover{
+  background:linear-gradient(135deg,#ffffffed,#fff8f5a3 55%,#eacbd6a6);color:#641c2c;
+  border-color:#9c7180;box-shadow:inset 0 1px 0 white,0 9px 24px #46202b1f;transform:none;
+ }
+}
+.button:active,.button.outline:active,.service-select:active,.menu-tools .category-shortcut:active{transform:none}
+@media(max-width:700px){}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ .button,.button.outline,.service-select,.menu-tools .category-shortcut{background:#f8ecef}
+}
+@media(prefers-reduced-transparency:reduce){
+ .button,.button.outline,.service-select,.menu-tools .category-shortcut{background:#f8ecef;backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+@media(prefers-reduced-motion:reduce){.button,.button.outline,.service-select,.menu-tools .category-shortcut{transition:none}}
+@media(forced-colors:active){
+ .button,.button.outline,.service-select,.menu-tools .category-shortcut,.menu-tools .category-shortcut[aria-expanded=true]{background:ButtonFace;color:ButtonText;border:1px solid ButtonText;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+@media(hover:hover){}

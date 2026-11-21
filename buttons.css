@@ -1,0 +1,54 @@
+/* Satin buttons with a quiet mouse-over highlight. */
+.button, .service-select{
+  border-radius: 10px;
+  border: 1px solid #6e202e;
+  background: #6e202e;
+  color: #fffaf6;
+  box-shadow: none;
+  transform: none;
+  transition: background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.button.outline {
+  border: 1px solid #bfa8a3;
+  background: #faf5ef;
+  color: #6e202e;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.service-select { border-radius: 12px; flex-shrink: 0; }
+/* Override earlier glass hover rules on touch devices too. */
+.button:hover, .service-select:hover{
+  background: #6e202e;
+  box-shadow: none;
+}
+.button.outline:hover { background: #faf5ef; }
+@media (hover:hover) and (pointer:fine) {
+  .button:hover, .service-select:hover{
+    background: #8c374a;
+    border-color: #8c374a;
+    box-shadow: 0 0 0 4px #6e202e0c, 0 6px 20px #6e202e20;
+  }
+  .button.outline:hover {
+    background: #f0e1e4;
+    border-color: #6e202e;
+    box-shadow: 0 0 0 4px #6e202e0c;
+  }
+}
+.button:active, .button.outline:active, .service-select:active{
+  transform: none;
+}
+.button:focus-visible, .service-select:focus-visible{
+  outline: 2px solid #6e202e;
+  outline-offset: 5px;
+}
+@media (max-width:700px) { }
+@media (prefers-reduced-motion:reduce) {
+  .button, .service-select{ transition: none; }
+}
+@media (forced-colors:active) {
+  .button, .button.outline, .service-select{
+    background: ButtonFace; color: ButtonText; border: 1px solid ButtonText; box-shadow: none;
+  }
+}
