@@ -75,5 +75,21 @@ window.salonGallery = [
       "es": "Corte fresco — video del estudio",
       "ja": "フレッシュなカット — スタジオ動画"
     }
+  },
+  {
+    "type": "video",
+    "src": "assets/gallery/beautyplus-multi-save.mov",
+    "title": {
+      "en": "Salon video",
+      "zh-CN": "沙龙视频",
+      "es": "Video del salón",
+      "ja": "サロンの動画"
+    },
+    "alt": {
+      "en": "Salon video",
+      "zh-CN": "沙龙视频",
+      "es": "Video del salón",
+      "ja": "サロンの動画"
+    }
   }
 ];
